@@ -20,6 +20,12 @@
     "extensions": [
       "./extensions/codex-apply-patch/index.ts",
       "./extensions/codex-web-search/index.ts"
+    ],
+    "skills": [
+      "./skills"
+    ],
+    "prompts": [
+      "./prompts"
     ]
   },
   "peerDependencies": {

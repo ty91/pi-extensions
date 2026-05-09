@@ -28,6 +28,18 @@ Injects OpenAI Responses API hosted `web_search` into GPT/Codex provider payload
 
 See [`extensions/codex-web-search`](extensions/codex-web-search/).
 
+## Prompt commands and skills
+
+### `/spec`
+
+Adds a `/spec [request]` prompt command for clarifying feature, bug-fix, behavior-change, or refactoring requirements before writing a spec.
+
+### Skills
+
+- `interview` — drives clarification for ideas, plans, and ambiguous requests.
+- `improve-codebase` — finds deepening opportunities for refactoring and architecture cleanup.
+- `to-spec` — turns the clarified conversation into a GitHub parent issue spec.
+
 ## Load only one extension
 
 To install the package but load only one extension, use Pi package filtering in `~/.pi/agent/settings.json`:
@@ -37,11 +49,15 @@ To install the package but load only one extension, use Pi package filtering in 
   "packages": [
     {
       "source": "git:github.com/ty91/pi-extensions",
-      "extensions": ["extensions/codex-apply-patch/index.ts"]
+      "extensions": ["extensions/codex-apply-patch/index.ts"],
+      "skills": [],
+      "prompts": []
     }
   ]
 }
 ```
+
+Omit `skills` or `prompts` from the filter if you want to load those resources too.
 
 ## License
 
