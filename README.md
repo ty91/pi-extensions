@@ -38,12 +38,19 @@ Adds a `/spec [request]` prompt command for clarifying feature, bug-fix, behavio
 
 Adds a `/plan [spec-or-issue]` prompt command for breaking a spec into small, verifiable implementation issues.
 
+### `/build`
+
+Adds a `/build [target]` prompt command for implementing a target end-to-end with a dedicated worktree, TDD workflow, and pull request.
+
 ### Skills
 
 - `interview` — drives clarification for ideas, plans, and ambiguous requests.
 - `improve-codebase` — finds deepening opportunities for refactoring and architecture cleanup.
 - `to-spec` — turns the clarified conversation into a GitHub parent issue spec.
 - `to-issues` — breaks a parent spec into independently grabbable GitHub sub-issues.
+- `git-worktree` — safely creates and manages Git worktrees.
+- `tdd` — guides test-driven implementation with vertical red-green-refactor cycles.
+- `pr` — creates and verifies a GitHub pull request for the current branch.
 
 ## Load only one extension
 
