@@ -1,0 +1,114 @@
+# Codex Apply Patch
+
+A Pi coding-agent extension that adds an `apply_patch` tool and a Codex-style patch harness so GPT-5-family models can propose structured diffs which Pi applies.
+
+This follows the OpenAI Apply Patch / V4A diff flow:
+- The model calls `apply_patch` with a raw Codex patch envelope in `patch`
+- Each file section is one of `*** Add File:`, `*** Update File:`, `*** Delete File:`
+- Update sections use V4A-style context/add/delete lines
+
+## What you get
+
+- A Pi tool named **`apply_patch`**
+- Codex-style patch parsing (`*** Begin Patch` / `*** End Patch`)
+- Atomic writes
+- Streaming progress updates in the Pi TUI
+
+## Install
+
+### Option A: Install as a Pi package
+
+```bash
+pi install git:github.com/ty91/pi-extensions
+```
+
+Then start Pi normally.
+
+### Option B: Copy into Pi extensions directory
+
+```bash
+mkdir -p ~/.pi/agent/extensions
+cp ./extensions/codex-apply-patch/index.ts ~/.pi/agent/extensions/codex-apply-patch.ts
+```
+
+### Option C: Load the extension explicitly
+
+```bash
+pi -e /absolute/path/to/pi-extensions/extensions/codex-apply-patch/index.ts
+```
+
+## Usage
+
+When the active model ID starts with `gpt-5`, the extension:
+- enables the `apply_patch` tool
+- disables Pi's built-in `edit`/`write` tools (so the model must use structured patches)
+
+## Tool schema
+
+`apply_patch` expects:
+
+```json
+{
+  "patch": "*** Begin Patch\n*** Update File: src/app.ts\n@@\n-old\n+new\n*** End Patch\n"
+}
+```
+
+Notes:
+- Pi custom tools still require a JSON wrapper, but the `patch` value is the raw Codex patch body.
+- `*** Add File:` content lines must start with `+`.
+- `*** Update File:` sections use `@@` hunks with `+`/`-`/` ` lines and optional `*** Move to:`.
+- `*** Delete File:` has no body.
+- Absolute paths and `../` paths are allowed, matching Codex-style path resolution more closely.
+- `*** Add File:` and `*** Move to:` may overwrite existing files.
+- Operations stop at the first failure; earlier successful changes are not rolled back.
+
+## Benchmarks & quality notes (informal)
+
+These are notes from local A/B runs to understand how “forced apply_patch” behaves vs Pi’s normal `edit`/`write` flow.
+
+- **baseline** = Pi built-in `edit`/`write`
+- **apply_patch** = this extension (forces structured diffs)
+- Each number below is the **mean of 10 runs** on the same repo snapshot and prompt.
+- **Cost** is taken from Pi’s JSONL `usage.cost.total`.
+
+### Small change (single-file fix)
+
+In a tiny one-file fix, forcing apply_patch was usually slower and more expensive.
+
+- `gpt-5.2`: baseline **$0.0467 / 44.6s** vs apply_patch **$0.0587 / 50.1s**
+- `gpt-5.2-codex`: baseline **$0.0291 / 22.6s** vs apply_patch **$0.0405 / 33.1s**
+
+### Multi-file change (feature across a few files)
+
+In a multi-file fix (3–5 files), results depended on the model:
+
+- `gpt-5.2`: baseline **$0.1557 / 136.4s** vs apply_patch **$0.1470 / 129.7s**
+- `gpt-5.2-codex`: baseline **$0.1002 / 82.6s** vs apply_patch **$0.1180 / 95.0s**
+
+Tool reliability note (10-run totals): on `gpt-5.2-codex`, forcing apply_patch reduced tool errors (**34 → 17**), but it cost more and took longer.
+
+### Code-quality observations from diffs
+
+- apply_patch gives a nice **audit trail** (explicit file ops + diffs). That’s the main “quality” win.
+- It doesn’t automatically guarantee cleaner code. In a few runs, models used shortcuts to get tests green (e.g. adding a hidden field like `__timesLeft` or escaping types with `any`).
+- Some runs also touched unrelated files (import specifier changes, etc.). That’s not always wrong, but it adds churn.
+
+Practical takeaway: if your priority is reviewability/reproducibility, forcing apply_patch is a good default. If you optimize for tiny one-line fixes, baseline tooling is often cheaper.
+
+## Development
+
+This is a single-file extension. You typically don't need to build anything; Pi loads the TypeScript directly.
+
+## References
+
+- OpenAI Platform docs (Apply Patch tool): https://platform.openai.com/docs/guides/apply_patch
+- OpenAI Agents SDK (TypeScript) `applyDiff` reference implementation: https://github.com/openai/openai-agents-js/blob/main/packages/agents-core/src/utils/applyDiff.ts
+- OpenAI Agents SDK (Python) `apply_diff` reference implementation: https://github.com/openai/openai-agents-python/blob/main/src/agents/apply_diff.py
+- OpenAI Agents SDK examples:
+  - TypeScript apply patch tool example: https://github.com/openai/openai-agents-js/blob/main/examples/tools/applyPatch.ts
+  - Python apply patch tool example: https://github.com/openai/openai-agents-python/blob/main/examples/tools/apply_patch.py
+- Pi coding-agent extensions docs: https://github.com/earendil-works/pi-mono/blob/main/packages/coding-agent/docs/extensions.md
+
+## License
+
+MIT

@@ -1,0 +1,30 @@
+{
+  "packageManager": "pnpm@10.27.0",
+  "name": "pi-extensions",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Personal Pi extensions for Codex-style workflows.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ty91/pi-extensions.git"
+  },
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "codex",
+    "apply-patch",
+    "web-search"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions/codex-apply-patch/index.ts",
+      "./extensions/codex-web-search/index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "typebox": "*"
+  }
+}
