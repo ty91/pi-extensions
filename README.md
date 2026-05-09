@@ -42,6 +42,10 @@ Adds a `/plan [spec-or-issue]` prompt command for breaking a spec into small, ve
 
 Adds a `/build [target]` prompt command for implementing a target end-to-end with a dedicated worktree, TDD workflow, and pull request.
 
+### `/merge-pr`
+
+Adds a `/merge-pr [pr-or-branch]` prompt command for merging a GitHub pull request and cleaning up branch/worktree state.
+
 ### Skills
 
 - `interview` — drives clarification for ideas, plans, and ambiguous requests.
