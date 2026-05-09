@@ -3,8 +3,6 @@ description: Implement a target end-to-end with worktree, TDD, and PR workflow.
 argument-hint: "[target]"
 ---
 
-# Build
-
 Implement the requested target end-to-end, then create a pull request.
 
 ## Target Resolution
