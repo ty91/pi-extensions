@@ -34,11 +34,16 @@ See [`extensions/codex-web-search`](extensions/codex-web-search/).
 
 Adds a `/spec [request]` prompt command for clarifying feature, bug-fix, behavior-change, or refactoring requirements before writing a spec.
 
+### `/plan`
+
+Adds a `/plan [spec-or-issue]` prompt command for breaking a spec into small, verifiable implementation issues.
+
 ### Skills
 
 - `interview` — drives clarification for ideas, plans, and ambiguous requests.
 - `improve-codebase` — finds deepening opportunities for refactoring and architecture cleanup.
 - `to-spec` — turns the clarified conversation into a GitHub parent issue spec.
+- `to-issues` — breaks a parent spec into independently grabbable GitHub sub-issues.
 
 ## Load only one extension
 
