@@ -34,6 +34,10 @@ See [`extensions/codex-web-search`](extensions/codex-web-search/).
 
 Adds a `/specify [request]` prompt command for clarifying feature, bug-fix, behavior-change, or refactoring requirements before writing a spec.
 
+### `/design`
+
+Adds a `/design [spec-or-issue]` prompt command for discussing design direction from a spec and publishing the resolved design decisions as a linked GitHub issue.
+
 ### `/plan`
 
 Adds a `/plan [spec-or-issue]` prompt command for breaking a spec into small, verifiable implementation issues.
@@ -50,6 +54,7 @@ Adds a `/merge-pr [pr-or-branch]` prompt command for merging a GitHub pull reque
 
 - `improve-codebase` — finds deepening opportunities for refactoring and architecture cleanup.
 - `to-spec` — turns the clarified conversation into a GitHub parent issue spec.
+- `to-design` — runs a focused design discussion from a spec and publishes the resolved direction as a linked GitHub issue.
 - `to-issues` — breaks a parent spec into independently grabbable GitHub sub-issues.
 - `git-worktree` — safely creates and manages Git worktrees.
 - `tdd` — guides test-driven implementation with vertical red-green-refactor cycles.
