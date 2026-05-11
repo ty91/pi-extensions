@@ -23,6 +23,10 @@ Check with the user that these modules match their expectations. Check with the 
 
 The GitHub issue is the parent issue for this spec. Do NOT create implementation sub-issues from this skill; that belongs to the planning step.
 
+## Formatting Guidelines
+
+For sections that contain multiple decisions, do not write one long flat bullet list. Organize related items under concise thematic subheadings, then use bullets within each group. Prefer 3-7 groups with 2-5 bullets each over a single exhaustive list.
+
 <spec-template>
 
 ## Problem Statement
