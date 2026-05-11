@@ -38,6 +38,10 @@ Adds a `/specify [request]` prompt command for clarifying feature, bug-fix, beha
 
 Adds a `/design [spec-or-issue]` prompt command for discussing design direction from a spec and publishing the resolved design decisions as a linked GitHub issue.
 
+### `/outline`
+
+Adds a `/outline [spec-and-design-issues]` prompt command for creating or refining a structure outline issue with a dependency graph, vertical-slice phases, high-level file changes, and validation strategy.
+
 ### `/plan`
 
 Adds a `/plan [spec-or-issue]` prompt command for breaking a spec into small, verifiable implementation issues.
@@ -55,6 +59,7 @@ Adds a `/merge-pr [pr-or-branch]` prompt command for merging a GitHub pull reque
 - `improve-codebase` — finds deepening opportunities for refactoring and architecture cleanup.
 - `to-spec` — turns the clarified conversation into a GitHub parent issue spec.
 - `to-design` — runs a focused design discussion from a spec and publishes the resolved direction as a linked GitHub issue.
+- `to-outline` — creates and iteratively refines a structure outline issue from related spec/design issues before task breakdown.
 - `to-issues` — breaks a parent spec into independently grabbable GitHub sub-issues.
 - `git-worktree` — safely creates and manages Git worktrees.
 - `tdd` — guides test-driven implementation with vertical red-green-refactor cycles.
