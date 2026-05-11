@@ -57,7 +57,6 @@ Adds a `/merge-pr [pr-or-branch]` prompt command for merging a GitHub pull reque
 ### Skills
 
 - `improve-codebase` — finds deepening opportunities for refactoring and architecture cleanup.
-- `to-spec` — turns the clarified conversation into a GitHub parent issue spec.
 - `to-design` — runs a focused design discussion from a spec and publishes the resolved direction as a linked GitHub issue.
 - `to-outline` — creates and iteratively refines a structure outline issue from related spec/design issues before task breakdown.
 - `to-tasks` — compiles an agreed structure outline into independently grabbable GitHub task sub-issues.

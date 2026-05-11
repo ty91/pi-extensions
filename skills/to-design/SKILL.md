@@ -1,13 +1,13 @@
 ---
 name: to-design
-description: Run a focused design discussion for a spec issue, then publish or update the resolved direction as a comment on that spec issue. Use after to-spec and before structure outlining or task breakdown.
+description: Run a focused design discussion for a spec issue, then publish or update the resolved direction as a comment on that spec issue. Use after specify and before structure outlining or task breakdown.
 ---
 
 # To Design
 
 This skill turns a spec into a design discussion artifact. The output is not a detailed implementation plan. It is a GitHub issue comment that captures where the work is going, what the intended result should look like, which existing patterns should guide it, and which design questions have been resolved.
 
-The source spec should usually be a GitHub parent issue created by `to-spec`. If the spec is not clear, ask the user which spec issue or spec document to use before continuing.
+The source spec should usually be a GitHub parent issue created by the `specify` prompt. If the spec is not clear, ask the user which spec issue or spec document to use before continuing.
 
 Do NOT create a separate design issue. Do NOT create implementation sub-issues from this skill; that belongs to planning/task breakdown.
 

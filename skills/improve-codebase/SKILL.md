@@ -67,7 +67,7 @@ Do not modify production code from this skill unless the user explicitly asks fo
 
 ### 4. Write the handoff issue
 
-When the design conversation has reached concrete shared understanding, you MUST stop and tell the user to create a GitHub issue for the refactor. Do not route this through the `to-spec` skill and do not require a separate issue template.
+When the design conversation has reached concrete shared understanding, you MUST stop and tell the user to create a GitHub issue for the refactor. Do not route this through a separate spec skill and do not require a separate issue template.
 
 Give the user these instructions for the issue:
 

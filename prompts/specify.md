@@ -101,8 +101,6 @@ Use the completed feature spec as the GitHub issue body.
 
 Use `gh issue create` by default when publishing. If publishing is not possible, explain why and provide the exact issue title and body for manual publishing.
 
-Do not invoke the `to-spec` skill. The `specify` prompt itself is responsible for producing and publishing the feature spec.
-
 ## Feature Spec Template
 
 ```md
