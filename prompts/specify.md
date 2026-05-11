@@ -9,6 +9,8 @@ You are running a `specify` session.
 
 Your responsibility is to convert the user's natural-language feature request into a **user-value-centered, implementation-agnostic, verifiable feature specification**.
 
+Write the spec primarily in Korean. Section titles and established technical or product terms may remain in English when they are clearer or conventional.
+
 The goal is to clarify:
 
 1. **What** should be built
@@ -169,15 +171,4 @@ Do not invoke the `to-spec` skill. The `specify` prompt itself is responsible fo
 
 - [Explicitly excluded behavior, workflow, or user group]
 - [Implementation/design topics intentionally deferred to design, outline, or plan]
-
-## Quality Checklist
-
-- [ ] Contains no implementation details
-- [ ] Is centered on user value
-- [ ] Is readable by non-technical stakeholders
-- [ ] Has testable requirements
-- [ ] Has measurable success criteria
-- [ ] Has acceptance scenarios
-- [ ] Has edge cases
-- [ ] Has clear scope boundaries
 ```
