@@ -30,9 +30,9 @@ See [`extensions/codex-web-search`](extensions/codex-web-search/).
 
 ## Prompt commands and skills
 
-### `/spec`
+### `/specify`
 
-Adds a `/spec [request]` prompt command for clarifying feature, bug-fix, behavior-change, or refactoring requirements before writing a spec.
+Adds a `/specify [request]` prompt command for clarifying feature, bug-fix, behavior-change, or refactoring requirements before writing a spec.
 
 ### `/plan`
 
