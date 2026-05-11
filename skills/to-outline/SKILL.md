@@ -7,7 +7,7 @@ description: Create and iteratively refine a structure outline issue from relate
 
 This skill turns related spec and design issues into a structure outline. The output is a single GitHub issue that explains the dependency graph and the vertical-slice phases that should guide later planning.
 
-This is not the task breakdown step. Do NOT create individual implementation issues from this skill; that belongs to `to-issues`.
+This is not the task breakdown step. Do NOT create individual implementation issues from this skill; that belongs to `to-tasks`.
 
 ## Output Language
 

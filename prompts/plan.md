@@ -1,12 +1,12 @@
 ---
-description: Break a spec into small verifiable tasks with acceptance criteria and dependency ordering.
-argument-hint: "[spec-or-issue]"
+description: Break a spec/design/outline into small verifiable task issues.
+argument-hint: "[spec-design-outline-issues]"
 ---
 
-Invoke the `to-issues` skill.
+Invoke the `to-tasks` skill.
 
 Planning target:
 
 $ARGUMENTS
 
-If empty, use the spec or parent issue already produced in this session. If none is clear, ask which spec or parent issue to plan.
+If empty, use the related spec, design, and outline issues already produced in this session. If any are unclear, ask which issues to plan from.
