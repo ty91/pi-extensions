@@ -5,7 +5,7 @@ description: Create and iteratively refine a structure outline comment on a spec
 
 # To Outline
 
-This skill turns a spec issue and its design comment into a structure outline. The output is a GitHub issue comment on the spec issue that explains the dependency graph and the vertical-slice phases that should guide later planning.
+This skill turns a spec issue and its design comment into a structure outline. The output is a GitHub issue comment on the spec issue that summarizes each phase's implementation intent and the vertical-slice phases that should guide later planning.
 
 This is not the task breakdown step. Do NOT create individual implementation issues from this skill; that belongs to `to-tasks`.
 
@@ -45,13 +45,13 @@ Then inspect the relevant codebase. Focus on:
 - Similar vertical slices already implemented
 - Refactoring opportunities exposed by the requested work
 
-### 2. Create the dependency graph
+### 2. Create the phase summary
 
-Map what depends on what. The graph should be implementation-relevant but still high-level enough to remain stable.
+Create a summary section that gives a one-line implementation-intent summary for each phase.
 
-Include dependencies such as schemas, domain modules, service boundaries, API contracts, UI flows, CLI flows, persistence, external systems, tests, docs, and migration/backfill concerns when relevant.
+Each summary line should make the purpose of the phase easy to scan before reading the full phase details.
 
-Use the dependency graph to explain ordering. Foundations should appear before dependent phases.
+Use the summaries to explain why the phase exists, not to duplicate the detailed phase description.
 
 ### 3. Create vertical-slice phases
 
@@ -83,9 +83,10 @@ Do not close or modify the spec issue body from this skill. If the structure out
 
 # Structure Outline
 
-## Dependency Graph
+## Summary
 
-A high-level dependency graph showing what depends on what and how the phases should be ordered.
+- Phase 1: One-line summary of the implementation intent for this phase.
+- Phase 2: One-line summary of the implementation intent for this phase.
 
 ## Phase 1: <phase topic>
 
