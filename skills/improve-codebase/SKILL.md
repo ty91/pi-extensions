@@ -65,4 +65,12 @@ Use [DEEPENING.md](DEEPENING.md) to classify dependencies and choose a testing s
 
 Do not modify production code from this skill unless the user explicitly asks for implementation. The output is architectural understanding, candidate refactors, and interface direction.
 
-When the design conversation has reached sufficient shared understanding, you MUST stop and ask the user whether to write a spec document. Do not end the session without asking this. If the user says yes, you MUST use the `to-spec` skill to create the spec.
+### 4. Write the handoff issue
+
+When the design conversation has reached concrete shared understanding, you MUST stop and tell the user to create a GitHub issue for the refactor. Do not route this through the `to-spec` skill and do not require a separate issue template.
+
+Give the user these instructions for the issue:
+
+- Write the issue in Korean. Technical terms may remain in English where that is clearer.
+- Add the `refactor` label.
+- Treat the issue as a handoff document for other agents that will read it with fresh context. Include enough background, decisions, constraints, files/modules involved, expected direction, and testing guidance for them to continue without relying on this conversation.
