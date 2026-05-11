@@ -1,15 +1,15 @@
 ---
 name: to-design
-description: Run a focused design discussion for a spec, then publish the resolved direction as a GitHub issue linked to the related spec. Use after to-spec and before implementation planning or task breakdown.
+description: Run a focused design discussion for a spec issue, then publish or update the resolved direction as a comment on that spec issue. Use after to-spec and before structure outlining or task breakdown.
 ---
 
 # To Design
 
-This skill turns a spec into a design discussion artifact. The output is not a detailed implementation plan. It is a GitHub issue that captures where the work is going, what the intended result should look like, which existing patterns should guide it, and which design questions have been resolved.
+This skill turns a spec into a design discussion artifact. The output is not a detailed implementation plan. It is a GitHub issue comment that captures where the work is going, what the intended result should look like, which existing patterns should guide it, and which design questions have been resolved.
 
 The source spec should usually be a GitHub parent issue created by `to-spec`. If the spec is not clear, ask the user which spec issue or spec document to use before continuing.
 
-Do NOT create implementation sub-issues from this skill; that belongs to planning/task breakdown.
+Do NOT create a separate design issue. Do NOT create implementation sub-issues from this skill; that belongs to planning/task breakdown.
 
 ## Output Language
 
@@ -41,7 +41,7 @@ If a question can be answered by exploring the codebase, explore the codebase in
 
 ### 3. Ask design questions one at a time
 
-Ask the user design questions one at a time until the important design decisions are concrete enough to write the design issue.
+Ask the user design questions one at a time until the important design decisions are concrete enough to write the design comment.
 
 For each question:
 
@@ -58,19 +58,19 @@ Continue until the following can be stated clearly:
 - The patterns to follow
 - The resolved design questions and decisions
 
-### 4. Publish the design issue
+### 4. Publish or update the design comment
 
-Write the design discussion artifact using the issue template below, then publish it as a GitHub issue.
+Write the design discussion artifact using the comment template below, then publish it as a comment on the spec issue.
 
-The design issue must be linked to the spec by starting with the `Related Spec` section. If appropriate, also leave a short comment on the spec issue linking back to the design issue.
+If a previous design comment already exists on the spec issue, update that comment instead of creating a duplicate. Find existing design comments by looking for the `<!-- pi:design -->` marker or an existing `# Design` comment authored by the agent.
 
-Do not close or modify the spec issue except to add that backlink comment when useful.
+Do not close or modify the spec issue body from this skill. If the design discussion reveals that the spec itself should change, stop and ask the user whether to update the spec before publishing the design comment.
 
-<issue-template>
+<comment-template>
 
-## Related Spec
+<!-- pi:design -->
 
-A reference to the related spec issue or spec document.
+# Design
 
 ## Current State
 
@@ -88,4 +88,4 @@ Existing product, codebase, architecture, testing, UX, API, or documentation pat
 
 A list of design questions that were resolved during the discussion, with the final decision for each question.
 
-</issue-template>
+</comment-template>

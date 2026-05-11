@@ -1,13 +1,15 @@
 ---
 name: to-outline
-description: Create and iteratively refine a structure outline issue from related spec and design issues, including dependency graph, vertical-slice phases, high-level file changes, and validation strategy. Use after design and before task breakdown.
+description: Create and iteratively refine a structure outline comment on a spec issue, using the spec body and design comment. Use after design and before task breakdown.
 ---
 
 # To Outline
 
-This skill turns related spec and design issues into a structure outline. The output is a single GitHub issue that explains the dependency graph and the vertical-slice phases that should guide later planning.
+This skill turns a spec issue and its design comment into a structure outline. The output is a GitHub issue comment on the spec issue that explains the dependency graph and the vertical-slice phases that should guide later planning.
 
 This is not the task breakdown step. Do NOT create individual implementation issues from this skill; that belongs to `to-tasks`.
+
+Do NOT create a separate outline issue. The spec issue is the container for the spec body, design comment, outline comment, and later task sub-issues.
 
 ## Output Language
 
@@ -25,13 +27,15 @@ Before creating the outline, read these reference documents completely and expli
 
 ## Process
 
-### 1. Read the spec, design, and relevant codebase
+### 1. Read the spec issue, design comment, and relevant codebase
 
-Read the related spec and design issues first.
+Read the related spec issue first, including its body and comments.
 
-For GitHub issues, use `gh issue view <number-or-url> --comments` and capture each issue number and URL. The spec issue remains the source of truth for product intent; the design issue remains the source of truth for resolved direction.
+For GitHub issues, use `gh issue view <number-or-url> --comments` and capture the spec issue number and URL. The spec issue body remains the source of truth for product intent.
 
-If either the spec issue or design issue is unclear, ask the user which issue to use before publishing anything.
+Find the design comment on the spec issue by looking for the `<!-- pi:design -->` marker or an existing `# Design` comment authored by the agent. The design comment is the source of truth for resolved direction.
+
+If the spec issue is unclear, ask the user which spec issue to use before publishing anything. If the design comment is missing or unclear, stop and ask the user whether to run the design step first.
 
 Then inspect the relevant codebase. Focus on:
 
@@ -63,21 +67,21 @@ For each phase, include:
 
 Manual validation must include ordered user actions and the desired behavior for each important action.
 
-### 4. Write and iterate the structure outline issue
+### 4. Write and iterate the structure outline comment
 
-Write the outline using the issue template below.
+Write the outline using the comment template below.
 
 This artifact should be iterated with the user. After drafting or updating it, ask what should be adjusted. Continue refining the structure outline until the user is satisfied.
 
-Publish it as a single GitHub issue. If an outline issue already exists for this spec/design pair, update that issue instead of creating a duplicate.
+Publish it as a comment on the spec issue. If a previous outline comment already exists on the spec issue, update that comment instead of creating a duplicate. Find existing outline comments by looking for the `<!-- pi:outline -->` marker or an existing `# Structure Outline` comment authored by the agent.
 
-If appropriate, leave short backlink comments on the related spec and design issues linking to the outline issue. Do not close or otherwise modify the spec or design issues.
+Do not close or modify the spec issue body from this skill. If the structure outline reveals that the spec or design should change, stop and ask the user whether to update the earlier artifact before publishing the outline comment.
 
-<issue-template>
+<comment-template>
 
-## Related Spec / Design
+<!-- pi:outline -->
 
-References to the related spec and design issues or documents.
+# Structure Outline
 
 ## Dependency Graph
 
@@ -99,4 +103,4 @@ How to validate this phase. Include automatic validation and manual validation. 
 
 [repeat the same structure for each additional vertical-slice phase if necessary]
 
-</issue-template>
+</comment-template>

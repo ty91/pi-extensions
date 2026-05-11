@@ -1,6 +1,6 @@
 ---
 name: to-tasks
-description: Compile agreed spec, design, and structure outline issues into independently grabbable GitHub task sub-issues. Use after to-outline when the user wants implementation tasks for AFK agents.
+description: Compile a spec issue's body, design comment, and structure outline comment into independently grabbable GitHub task sub-issues. Use after to-outline when the user wants implementation tasks for AFK agents.
 ---
 
 # To Tasks
@@ -9,7 +9,7 @@ Turn an agreed structure outline into tactical implementation task issues.
 
 This skill does not redesign the feature. It compiles the reviewed `spec -> design -> outline` artifacts into small, independently implementable task issues that an AFK agent can pick up.
 
-The structure outline is the primary source for dependency ordering, phase boundaries, likely file changes, and validation direction. If the outline is missing, stale, ambiguous, or inconsistent with the spec/design/codebase, stop and ask whether to revise the outline first.
+The structure outline comment is the primary source for dependency ordering, phase boundaries, likely file changes, and validation direction. If the outline is missing, stale, ambiguous, or inconsistent with the spec/design/codebase, stop and ask whether to revise the outline first.
 
 ## Output Language
 
@@ -17,16 +17,20 @@ Write GitHub issue titles and bodies in Korean by default. Preserve code identif
 
 ## Source Documents and Ownership
 
-Read all relevant source documents before creating tasks:
+Read all relevant source artifacts from the spec issue before creating tasks:
 
-- Spec issue: product intent and scope.
-- Design issue: resolved direction and design decisions.
-- Outline issue: dependency graph, phase ordering, high-level file changes, and validation strategy.
+- Spec issue body: product intent and scope.
+- Design comment on the spec issue: resolved direction and design decisions.
+- Outline comment on the spec issue: dependency graph, phase ordering, high-level file changes, and validation strategy.
 - Relevant codebase sections: existing implementation details needed to make task boundaries, likely file changes, and verification steps accurate.
 
-The task parent issue should usually be the outline issue, because tasks are the executable breakdown of that outline. If the user explicitly identifies a different parent issue, use that instead.
+The task parent issue is the spec issue, because the spec issue is the container for the spec body, design comment, outline comment, and task sub-issues. If the user explicitly identifies a different parent issue, confirm before using it.
 
-For GitHub issues, use `gh issue view <number-or-url> --comments` and capture the issue numbers and URLs for the spec, design, outline, and task parent.
+For GitHub issues, use `gh issue view <number-or-url> --comments` and capture the spec issue number and URL.
+
+Find the design comment by looking for the `<!-- pi:design -->` marker or an existing `# Design` comment authored by the agent. Find the outline comment by looking for the `<!-- pi:outline -->` marker or an existing `# Structure Outline` comment authored by the agent.
+
+If the design or outline comment is missing or unclear, stop and ask the user whether to run or revise the earlier step before publishing tasks.
 
 ## Process
 
@@ -34,12 +38,12 @@ For GitHub issues, use `gh issue view <number-or-url> --comments` and capture th
 
 Operate in read-only mode while gathering context:
 
-- Read the related spec, design, and outline issues.
+- Read the spec issue body, design comment, and outline comment.
 - Inspect enough of the relevant codebase to make task boundaries concrete.
 - Identify existing patterns, naming conventions, tests, and verification commands that each task should reference.
 - Note missing information, conflicts, or stale assumptions.
 
-Do not recreate the dependency graph or invent a new phase structure. Use the outline as the source of truth for structure and ordering.
+Do not recreate the dependency graph or invent a new phase structure. Use the outline comment as the source of truth for structure and ordering.
 
 If you discover that the outline cannot be compiled into credible tasks, stop and ask the user whether to revise the outline first. Do not silently publish tasks that contradict the outline.
 
@@ -77,17 +81,14 @@ gh api --method POST "repos/:owner/:repo/issues/$parent_number/sub_issues" -F su
 
 If GitHub rejects the sub-issue attachment, stop and report the error. Do NOT silently publish a flat list of issues that are not connected to the parent.
 
-If appropriate, leave a short comment on the outline issue summarizing the task set. Do not close or otherwise modify the spec, design, or outline issues.
+If appropriate, leave a short comment on the spec issue summarizing the task set. Do not close or otherwise modify the spec issue body, design comment, or outline comment.
 
 <issue-template>
 
 ## Task N: [작업 제목]
 
 **Related context:**
-- Spec:
-- Design:
-- Outline:
-- Parent:
+- Spec issue:
 
 **Description:**
 Describe what this task should accomplish and why it exists. Focus on intended behavior and purpose, not step-by-step implementation.
