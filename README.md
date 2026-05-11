@@ -48,7 +48,6 @@ Adds a `/merge-pr [pr-or-branch]` prompt command for merging a GitHub pull reque
 
 ### Skills
 
-- `interview` — drives clarification for ideas, plans, and ambiguous requests.
 - `improve-codebase` — finds deepening opportunities for refactoring and architecture cleanup.
 - `to-spec` — turns the clarified conversation into a GitHub parent issue spec.
 - `to-issues` — breaks a parent spec into independently grabbable GitHub sub-issues.
