@@ -33,9 +33,17 @@ The problem that the user is facing, from the user's perspective.
 
 The solution to the problem, from the user's perspective.
 
-## Technical Context
+## User Stories
 
-Relevant technical context, including existing system behavior, architectural constraints, key dependencies, and codebase conventions that affect implementation planning.
+A LONG, numbered list of user stories. Each user story should be in the format of:
+
+1. As an <actor>, I want a <feature>, so that <benefit>
+
+<user-story-example>
+1. As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending
+</user-story-example>
+
+This list of user stories should be extremely extensive and cover all aspects of the feature.
 
 ## Implementation Decisions
 
@@ -62,10 +70,6 @@ A list of testing decisions that were made. Include:
 ## Out of Scope
 
 A description of the things that are out of scope for this spec.
-
-## Success Criteria
-
-A list of specific, testable conditions that must be true before the requested behavior can be considered complete.
 
 ## Further Notes
 
