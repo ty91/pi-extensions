@@ -62,6 +62,7 @@ Adds a `/merge-pr [pr-or-branch]` prompt command for merging a GitHub pull reque
 - `to-tasks` — compiles an agreed structure outline into independently grabbable GitHub task sub-issues.
 - `git-worktree` — safely creates and manages Git worktrees.
 - `tdd` — guides test-driven implementation with vertical red-green-refactor cycles.
+- `frontend-claude` — delegates frontend implementation work to Claude via `claude -p` while Pi verifies the result.
 - `pr` — creates and verifies a GitHub pull request for the current branch.
 
 ## Load only one extension
