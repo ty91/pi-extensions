@@ -33,6 +33,8 @@ Run Claude from the repository root with a concise prompt containing the relevan
 claude -p <<'EOF'
 You are helping Pi implement only the frontend UI portion of a larger task.
 
+If this repository contains DESIGN.md, read it before starting and follow its guidance.
+
 Context: <brief repository and relevant file context>
 Task: <specific frontend implementation request>
 Constraints: preserve existing user changes; do not run destructive Git commands; do not commit or push.
