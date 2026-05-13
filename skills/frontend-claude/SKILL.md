@@ -29,6 +29,8 @@ Pi should extract the frontend UI implementation slice from the user's broader r
 
 Run Claude from the repository root with a concise prompt containing the relevant context, the specific frontend UI task, constraints, and desired report format. Send the prompt through stdin with a quoted heredoc. Frontend work may take more than 10 minutes, so use a generous tool timeout, commonly 1800-3600 seconds.
 
+If the repository contains `DESIGN.md`, Claude can read it as part of the delegated work; Pi does not need to read `DESIGN.md` directly before delegating.
+
 ```bash
 claude -p <<'EOF'
 You are helping Pi implement only the frontend UI portion of a larger task.
