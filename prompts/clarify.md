@@ -1,5 +1,5 @@
 ---
-description: Explore an idea through clarification, turn it into an approved design, and publish it as a GitHub issue.
+description: Explore an idea through clarification, turn it into an approved design, and publish it to the repository's issue tracker.
 argument-hint: "[idea-or-request]"
 ---
 
@@ -33,9 +33,9 @@ You MUST create a task for each of these items and complete them in order:
 2. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
 3. **Propose 2-3 approaches** — with trade-offs and your recommendation
 4. **Present design** — in sections scaled to their complexity, get user approval after each section
-5. **Publish design issue** — create a GitHub issue with the validated design
+5. **Publish design issue** — create an issue in the repository's issue tracker with the validated design
 6. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
-7. **User reviews written spec** — ask user to review the GitHub issue before proceeding
+7. **User reviews written spec** — ask user to review the created issue before proceeding
 8. **Transition to implementation planning** — proceed to the appropriate planning/outline step only after user approval
 
 ## Process Flow
@@ -47,7 +47,7 @@ digraph clarify {
     "Propose 2-3 approaches" [shape=box];
     "Present design sections" [shape=box];
     "User approves design?" [shape=diamond];
-    "Create GitHub issue" [shape=box];
+    "Create issue" [shape=box];
     "Spec self-review\n(fix inline)" [shape=box];
     "User reviews issue?" [shape=diamond];
     "Proceed to planning/outline" [shape=doublecircle];
@@ -57,10 +57,10 @@ digraph clarify {
     "Propose 2-3 approaches" -> "Present design sections";
     "Present design sections" -> "User approves design?";
     "User approves design?" -> "Present design sections" [label="no, revise"];
-    "User approves design?" -> "Create GitHub issue" [label="yes"];
-    "Create GitHub issue" -> "Spec self-review\n(fix inline)";
+    "User approves design?" -> "Create issue" [label="yes"];
+    "Create issue" -> "Spec self-review\n(fix inline)";
     "Spec self-review\n(fix inline)" -> "User reviews issue?";
-    "User reviews issue?" -> "Create GitHub issue" [label="changes requested"];
+    "User reviews issue?" -> "Create issue" [label="changes requested"];
     "User reviews issue?" -> "Proceed to planning/outline" [label="approved"];
 }
 ```
@@ -108,34 +108,35 @@ digraph clarify {
 
 ## After the Design
 
-**GitHub Issue Publishing:**
+**Issue Publishing:**
 
-- Publish the validated design (spec) as a GitHub issue in the current repository.
-- Write the GitHub issue title and body primarily in Korean. Established technical terms may remain in English when they are clearer or conventional.
-- Use English for GitHub issue section headings.
-- Use the design name as the GitHub issue title:
+- Publish the validated design (spec) as an issue in the repository's issue tracker.
+- If no issue tracker is specified, stop and ask the user which issue tracker to use.
+- Write the issue title and body primarily in Korean. Established technical terms may remain in English when they are clearer or conventional.
+- Use English for issue section headings.
+- Use the design name as the issue title:
 
 ```text
-Design Spec: [Design Name]
+Spec: [Design Name]
 ```
 
-- Use the completed design spec as the GitHub issue body.
-- Use `gh issue create` by default when publishing. If publishing is not possible, explain why and provide the exact issue title and body for manual publishing.
+- Use the completed design spec as the issue body.
+- Use the appropriate tool or documented workflow for the repository's issue tracker. If publishing is not possible, explain why and provide the exact issue title and body for manual publishing.
 
 **Spec Self-Review:**
-After creating or updating the GitHub issue, look at it with fresh eyes:
+After creating or updating the issue, look at it with fresh eyes:
 
 1. **Placeholder scan:** Any "TBD", "TODO", incomplete sections, or vague requirements? Fix them.
 2. **Internal consistency:** Do any sections contradict each other? Does the architecture match the feature descriptions?
 3. **Scope check:** Is this focused enough for a single implementation plan, or does it need decomposition?
 4. **Ambiguity check:** Could any requirement be interpreted two different ways? If so, pick one and make it explicit.
 
-Fix any issues inline by editing the GitHub issue. No need to re-review — just fix and move on.
+Fix any issues inline by editing the issue. No need to re-review — just fix and move on.
 
 **User Review Gate:**
 After the spec review loop passes, ask the user to review the written issue before proceeding:
 
-> "Spec written as GitHub issue `<issue-url>`. Please review it and let me know if you want to make any changes before we start writing out the implementation plan."
+> "Spec written as issue `<issue-url>`. Please review it and let me know if you want to make any changes before we start writing out the implementation plan."
 
 Wait for the user's response. If they request changes, make them and re-run the spec review loop. Only proceed once the user approves.
 
