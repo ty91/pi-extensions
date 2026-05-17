@@ -64,6 +64,7 @@ Adds a `/merge-pr [pr-or-branch]` prompt command for merging a GitHub pull reque
 - `tdd` — guides test-driven implementation with vertical red-green-refactor cycles.
 - `frontend-claude` — delegates frontend implementation work to Claude via `claude -p` while Pi verifies the result.
 - `pr` — creates and verifies a GitHub pull request for the current branch.
+- `setup-repo` — configures a repo-local issue tracker workflow for other skills to read.
 
 ## Load only one extension
 
